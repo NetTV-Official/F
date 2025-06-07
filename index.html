@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Friend Messenger</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    input, button {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="password" id="password" placeholder="Enter Password" />
+  <input type="text" id="message" placeholder="Type your message" />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('message').value;
+
+      if (password !== "Password") {
+        alert("Incorrect password.");
+        return;
+      }
+
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notifications.");
+        return;
+      }
+
+      if (Notification.permission === "granted") {
+        new Notification("New Message", { body: message });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function(permission) {
+          if (permission === "granted") {
+            new Notification("New Message", { body: message });
+          } else {
+            alert("Notification permission was denied.");
+          }
+        });
+      } else {
+        alert("Notification permission was denied.");
+      }
+    }
+  </script>
+</body>
+</html>
