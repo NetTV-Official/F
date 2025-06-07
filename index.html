@@ -2,56 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Friend Messenger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Widget Page</title>
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
+    /* Center the container vertically and horizontally */
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
     }
-    input, button {
-      margin: 0.5rem;
-      padding: 0.5rem;
-      font-size: 1rem;
+    #chat-container {
+      height: 500px;
+      width: 400px; /* You can adjust width as needed */
+      border: 1px solid #ccc;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
     }
   </style>
 </head>
 <body>
-
-  <input type="password" id="password" placeholder="Enter Password" />
-  <input type="text" id="message" placeholder="Type your message" />
-  <button onclick="sendMessage()">Send</button>
-
-  <script>
-    function sendMessage() {
-      const password = document.getElementById('password').value;
-      const message = document.getElementById('message').value;
-
-      if (password !== "Password") {
-        alert("Incorrect password.");
-        return;
-      }
-
-      if (!("Notification" in window)) {
-        alert("This browser does not support desktop notifications.");
-        return;
-      }
-
-      if (Notification.permission === "granted") {
-        new Notification("New Message", { body: message });
-      } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(function(permission) {
-          if (permission === "granted") {
-            new Notification("New Message", { body: message });
-          } else {
-            alert("Notification permission was denied.");
-          }
-        });
-      } else {
-        alert("Notification permission was denied.");
-      }
-    }
-  </script>
+  <div id="chat-container">
+    <div id="rt-5770f2105c769d4621f1f0bb85098f1c"></div>
+    <script src="https://rumbletalk.com/client/?B4YRQsKp"></script>
+  </div>
 </body>
 </html>
